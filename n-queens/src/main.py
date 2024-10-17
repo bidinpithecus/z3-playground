@@ -37,7 +37,7 @@ def addAtMostOneQueenPerCol(solver: Solver, cells: list[list[Bool]]) -> Solver:
 # Each diagonal must have at most one queen
 def addAtMostOneQueenPerDiagonal(solver: Solver, cells: list[list[Bool]]) -> Solver:
     diagonals = getDiagonals(cells)
-    solver.add([AtMost(*diag, 1) for diag in diagonals if len(diag) > 1])  # Add constraints for diagonals
+    solver.add([AtMost(*diag, 1) for diag in diagonals if len(diag) > 1])
     return solver
 
 if __name__ == "__main__":
@@ -58,11 +58,11 @@ if __name__ == "__main__":
 
     if solver.check() == sat:
         model = solver.model()
-        print("Solution found:")
+        print("sat")
         for i in range(nQueens):
             row = ""
             for j in range(nQueens):
-                row += "Q " if model[cells[i][j]] else ". "
+                row += "Q " if model[cells[i][j]] else "· "
             print(row)
     else:
-        print("No solution found.")
+        print("unsat")
