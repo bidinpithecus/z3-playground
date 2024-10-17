@@ -39,7 +39,7 @@ A solução, se encontrada, é exibida como uma grade `N x N`. Cada linha repres
 
 Para o problema das 4-Rainhas, a saída pode ser:
 
-```q
+```smt
 sat
 · · Q ·
 Q · · ·
