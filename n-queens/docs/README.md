@@ -29,7 +29,7 @@ Substitua `<número de rainhas>` pelo número de rainhas.
 python src/main.py 4
 ```
 
-Este comando tenta resolver o problema das 8-Rainhas.
+Este comando tenta resolver o problema das 4-Rainhas.
 
 ## Saída
 
