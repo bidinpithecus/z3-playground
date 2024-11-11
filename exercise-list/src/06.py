@@ -16,16 +16,12 @@ solver.add(Distinct([orders[shoe] for shoe in shoes]))
 solver.add([And(1 <= store_vars[store], store_vars[store] <= 4) for store in stores])
 solver.add(Distinct([store_vars[store] for store in stores]))
 
-# Harriet bought fuchsia flats at Heels in a Handcart
 solver.add(orders['fuchsia flats'] == store_vars["Heels in a Handcart"])
 
-# The store she visited just after buying her purple pumps was not Tootsies
 solver.add(orders['purple pumps'] + 1 != store_vars['Tootsies'])
 
-# The Foot Farm was Harriet’s second stop. 
 solver.add(store_vars['Foot Farm'] == 2)
 
-# Two stops after leaving The Shoe Palace, Harriet bought her suede sandals
 solver.add(store_vars['The Shoe Palace'] + 2 == orders['suede sandals'])
 
 if solver.check() == sat:

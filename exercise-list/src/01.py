@@ -10,14 +10,11 @@ def find_n_indices_with_m_sum(solver: Solver, arr: list[int], n: int, m: int) ->
 
   variables = [Int(f'i{i}') for i in range(n)]
 
-  # Valid indices only
   for var in variables:
     solver.add(var >= 0, var < len_array)
 
-  # Add constraints for valid index values
   solver.add(Distinct(variables))
 
-  # Add a constraint for the sum of the selected array elements
   sum_expression = Sum([If(var == i, arr[i], 0) for var in variables for i in range(len_array)])
   solver.add(sum_expression == m)
 

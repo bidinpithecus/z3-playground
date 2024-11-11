@@ -19,25 +19,21 @@ if __name__ == "__main__":
   solver = Solver()
 
   cells = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p]
-  # 1 to 16 distinct numbers
   solver.add(Distinct(cells))
   for cell in cells:
     solver.add(1 <= cell, cell <= 16)
 
-  # Non remainder divisions
   solver.add(b % c == 0)
   solver.add(e % f == 0)
   solver.add(g % k == 0)
   solver.add(h % l == 0)
   solver.add(n % o == 0)
 
-  # Rows
   solver.add(a + (b / c) == d)
   solver.add((e / f) + g == h)
   solver.add(i + j + k == l)
   solver.add(m - (n / o) == p)
 
-  # Columns
   solver.add(a + (e * i) == m)
   solver.add(b - (f * j) == n)
   solver.add(c - (g / k) == o)

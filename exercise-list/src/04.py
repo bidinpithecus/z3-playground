@@ -2,10 +2,9 @@
 
 from z3 import *
 
-# ages = range(0,)
 
-m = Int('m')  # my age
-h = Int('h')  # husband's age
+m = Int('m')
+h = Int('h')
 
 age_constraints = And(m > 13, h > 13)
 
@@ -16,10 +15,10 @@ hlist = [Real(f'hlist_{i}') for i in range(5)]
 mlist = [Real(f'mlist_{i}') for i in range(5)]
 
 operations = [
-    lambda x: x + 2,   # Operation 1
-    lambda x: x / 8,   # Operation 2
-    lambda x: x - 3,   # Operation 3
-    lambda x: x * 7    # Operation 4
+    lambda x: x + 2,
+    lambda x: x / 8,
+    lambda x: x - 3,
+    lambda x: x * 7 
 ]
 
 solver = Solver()

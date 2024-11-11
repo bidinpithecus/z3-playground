@@ -12,11 +12,9 @@ if __name__ == "__main__":
   solver = Solver()
 
   types = [man, woman, child]
-  # Números válidos
   for type in types:
     solver.add(0 <= type)
 
-  # Constraints
   solver.add(man + woman + child == 100)
   solver.add((3 * man) + (2 * woman) + (0.5 * child) == 100)
   solver.add(woman == 5 * man)
