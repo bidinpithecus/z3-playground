@@ -13,8 +13,8 @@ pairwise_weights = [80, 82, 83, 84, 85, 86, 87, 88, 90, 91]
 solver.add(bales[0] + bales[1] == pairwise_weights[0])
 solver.add(bales[0] + bales[2] == pairwise_weights[1])
 
-solver.add(bales[3] + bales[4] == pairwise_weights[len(pairwise_weights) - 1])
 solver.add(bales[2] + bales[4] == pairwise_weights[len(pairwise_weights) - 2])
+solver.add(bales[3] + bales[4] == pairwise_weights[len(pairwise_weights) - 1])
 
 solver.add(sum(bales) == sum(pairwise_weights) / 4)
 

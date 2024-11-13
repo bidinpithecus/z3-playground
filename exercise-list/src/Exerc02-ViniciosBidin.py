@@ -16,28 +16,21 @@ if __name__ == "__main__":
   i, j, k, l = Ints('i j k l')
   m, n, o, p = Ints('m n o p')
 
-  solver = Solver()
+  solver = SolverFor("QF_FD")
 
   cells = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p]
   solver.add(Distinct(cells))
   for cell in cells:
     solver.add(1 <= cell, cell <= 16)
 
-  solver.add(b % c == 0)
-  solver.add(e % f == 0)
-  solver.add(g % k == 0)
-  solver.add(h % l == 0)
-  solver.add(n % o == 0)
-
-  solver.add(a + (b / c) == d)
-  solver.add((e / f) + g == h)
-  solver.add(i + j + k == l)
-  solver.add(m - (n / o) == p)
-
-  solver.add(a + (e * i) == m)
-  solver.add(b - (f * j) == n)
-  solver.add(c - (g / k) == o)
-  solver.add(d + (h / l) == p)
+  solver.add(b == c * (d - a))
+  solver.add(e == f * (h - g))
+  solver.add(l == i + (j + k))
+  solver.add(n == o * (m - p))
+  solver.add(m == a + (e * i))
+  solver.add(n == b - (f * j))
+  solver.add(g == k * (c - o))
+  solver.add(h == l * (p - d))
 
   if solver.check() == sat:
     model = solver.model()
@@ -45,5 +38,5 @@ if __name__ == "__main__":
     print("sat:")
     for row in solution:
       print(row)
-else:
+  else:
     print("unsat")

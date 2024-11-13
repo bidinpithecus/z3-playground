@@ -4,16 +4,18 @@ from z3 import *
 
 apples, bananas, mangoes, oranges = Ints('apples bananas mangoes oranges')
 
-solver = Solver()
+solver = Optimize()
 
 solver.add(apples > 0, bananas > 0, mangoes > 0, oranges > 0)
 
 solver.add(bananas + oranges + mangoes + apples == 100)
+solver.add((3.0 / 5) * bananas + (5.0 / 7) * oranges + (7.0 / 9) * mangoes + 3 * apples <= 100)
 
-solver.add(3 * (bananas / 5) + 5 * (oranges / 7) + 7 * (mangoes / 9) + 9 * (apples / 3) == 100)
+solver.minimize(bananas)
+solver.minimize(apples)
 
-solver.add(bananas <= mangoes, bananas <= oranges)
-solver.add(apples <= mangoes, apples <= oranges)
+# solver.add(bananas <= mangoes, bananas <= oranges)
+# solver.add(apples <= mangoes, apples <= oranges)
 
 if solver.check() == sat:
     model = solver.model()
